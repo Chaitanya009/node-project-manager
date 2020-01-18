@@ -3,22 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  test(){
+    console.log('/////////////')
+    function onFs(fs){
+      fs.root.getDirectory('Documents2', {create:true}, function(directoryEntry){
+        //directoryEntry.isFile === false
+        //directoryEntry.isDirectory === true
+        //directoryEntry.name === 'Documents'
+        //directoryEntry.fullPath === '/Documents'
+        
+        }, onError);
+
+      }
+
+    // Opening a file system with temporary storage
+    window.requestFileSystem(TEMPORARY, 1024*1024 /*1MB*/, onFs, onError);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Template Generator</h1>
+      <button onClick={this.test}>create new</button>
     </div>
   );
 }

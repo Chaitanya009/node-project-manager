@@ -1,4 +1,6 @@
+#!/usr/bin/env node
 const program = require('commander')
+const util = require('./utils/utility')
 
 program
     .version('1.0.0')
@@ -6,8 +8,12 @@ program
 
 program
     .command('start')
-    .action(() => {
-        console.log('/////////')
+    .action(async () => {
+        try {
+            await util.runCommand("node server.js")
+        } catch (err) {
+            console.log(err)
+        }
     })
 
 program
